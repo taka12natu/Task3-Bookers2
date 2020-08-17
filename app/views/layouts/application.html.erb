@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookers2</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <header>
+    <h1>Bookers</h1>
+    <p>Home</p>
+    <p>About</p>
+    <p>sign up</p>
+    <p>login</p>
+  </header><!-- /header -->
+
+  <body>
+    <%= yield %>
+  </body>
+<footer>
+  <p>CopyRight Infratop.inc</p>
+</footer>
+</html>

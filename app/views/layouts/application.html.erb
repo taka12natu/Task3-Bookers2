@@ -8,12 +8,20 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+
   <header>
     <h1>Bookers</h1>
-    <p>Home</p>
-    <p>About</p>
-    <p>sign up</p>
-    <p>login</p>
+    <% if user_signed_in? %>
+      <%= link_to "Home", user_path(@user.id) %>
+      <%= link_to "Users", users_path %>
+      <%= link_to "Books", user_path(@user.id) %>
+      <%= link_to "logout", destroy_user_session_path, method: :delete %>
+    <% else %>
+      <%= link_to "Home", "/" %>
+      <%= link_to "about", home_about_path %>
+      <%= link_to "sign up", new_user_registration_path %>
+      <%= link_to "login", new_user_session_path %>
+    <% end %>
   </header><!-- /header -->
 
   <body>

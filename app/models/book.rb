@@ -1,9 +1,8 @@
-class User < ApplicationRecord
+class Book < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-    has_many :books
-    accepts_nested_attributes_for :books
+     belongs_to :user
 end

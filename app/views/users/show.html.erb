@@ -2,3 +2,43 @@
 
 <!-- 試用のために仮設置中 -->
 <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+
+<%= form_for(@user) do |f| %>
+	<div class="leftside">
+		<h1>User info</h1>
+		<span>picture</span>
+		<p>name</p>
+		<%= @user.name %>
+		<p>introduction</p>
+		<%= @user.introduction %>
+		<%= link_to "edit menu", edit_user_path %>
+	<% end %>
+		<h1>New book</h1>
+		<%= form_for(@book, url: books_path) do |b| %>
+			<%= b.label :Title %>
+		    <%= b.text_field :title %>
+			<%= b.label :Opinion %>
+			<%= b.text_field :body %>
+			<%= b.submit "Create Book" %>
+		<% end %>
+
+<h1>Books</h1>
+<table>
+	<thead>
+		<tr>
+			<th>image</th>
+			<th>Title</th>
+			<th>Opinion</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @books.each do |book| %>
+		<tr>
+			<td>jpg</td>
+			<td><%= @book.title %></td>
+			<td><%= @book.body %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+

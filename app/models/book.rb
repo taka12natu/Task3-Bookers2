@@ -1,8 +1,9 @@
 class Book < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
 
-     belongs_to :user
+	validates :title, presence: true
+	validates :body, length: {maximum: 200}, presence: true
+
+
+	belongs_to :user
+	# accepts_attachments_for :users, attachment: :profile_image
 end

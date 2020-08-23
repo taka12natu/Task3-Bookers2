@@ -1,0 +1,34 @@
+
+<%= render 'layouts/error_message', model: @book %>
+
+<%= render "layouts/side_bar", {user: @user, book: @book} %>
+
+<div class="col-xs-9">
+
+	<h2>Book detail</h2>
+
+	<table class="table">
+		<tr>
+			<th>
+				<%= link_to(user_path(@book.user_id)) do %>
+					<%= attachment_image_tag @book.user, :profile_image, :fill, 40,40, fallback: "no_image.jpg", size:'40x40' %>
+							<p><%= @book.user.name %></p>
+				<% end %>
+	    	</th>
+			<th><%= @book.title %></th>
+			<th><%= @book.body %></th>
+			<% if @book.user == current_user %>
+				<th>
+					<%= link_to(edit_book_path(@book.id)) do %>
+						<button type="button" class="btn btn-success btn-xs">Edit</button>
+					<% end %>
+				</th>
+				<th>
+					<%= link_to(book_path(@book), method: :delete, data: {confirm: "削除しますか？"}) do %>
+						<button type="button" class="btn btn-danger btn-xs">Destroy</button>
+					<% end %>
+				</th>
+			<% end %>
+		</tr>
+	</table>
+</div>
